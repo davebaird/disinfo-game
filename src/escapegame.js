@@ -1119,10 +1119,10 @@ function changeLang(i){
 
 // items specific to this animation
 function updateScreen(){
-	document.getElementById("globalContainer").style = "background-image: url(img/back"+
+	document.getElementById("globalContainer").style = "background-image: url(./img/back"+
 		(currentPage == "Q1" && veilOn ? "-veil" : "")+".png); min-height:100%";
 	var elem = document.querySelectorAll(".sourcePDF");
-	for (var i=0; i<elem.length; i++) {elem[i].href="PDF/cards_"+lang+".pdf"; }
+	for (var i=0; i<elem.length; i++) {elem[i].href="./PDF/cards_"+lang+".pdf"; }
 };
 
 // Find needle in Object haystack
