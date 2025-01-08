@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Escape Game</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/w3.css" type="text/css" />
+	<link rel="stylesheet" href="./css/OCE_w3.css" type="text/css" />
+	<script type="text/javascript" src="./src/interface.js"></script>
+	<script type="text/javascript" src="./custom/texts-new.js"></script>
+	<script type="text/javascript" src="./src/escapegame.js"></script>
+</head>
+<body style="background-color:#DDDDDD" onresize="updateMat()">
+
+<!-- Global container -->
+<div id="globalContainer" class="w3-grisclair" style="background-image: url(./img/back.png); min-height:100%">
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-nuit w3-card w3-animate-opacity" style="display:none; width:280px; z-index:2" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-xxlarge w3-padding-16 w3-hover-nuit w3-hover-text-white w3-text-gris" style="text-align:right; line-height:1" ><span class="icon-cross-24"></span></a>
+
+<div class="w3-container w3-row-padding w3-text-gris">Choose your language</div>
+<div class="w3-container w3-row-padding">
+    <!-- Language switch -->
+    <div class="w3-container w3-text-gris w3-hover-text-white w3-col l3 m3 s3" onClick="changeLang(EN)" id="EN">
+        <div class="drapo"></div>
+        <p style="text-align:center;margin-bottom:0px;margin-top:4px">EN</p>
+    </div>
+    <div class="w3-container w3-text-gris w3-hover-text-white w3-col l3 m3 s3" onClick="changeLang(FR)" id="FR">
+        <div class="drapo"></div>
+        <p style="text-align:center;margin-bottom:0px;margin-top:4px">FR</p>
+    </div>
+    <div class="w3-container w3-text-gris w3-hover-text-white w3-col l3 m3 s3" onClick="changeLang(DE)" id="DE">
+        <div class="drapo"></div>
+        <p style="text-align:center;margin-bottom:0px;margin-top:4px">DE</p>
+    </div>
+    <div class="w3-container w3-text-gris w3-hover-text-white w3-col l3 m3 s3" onClick="changeLang(ES)" id="ES">
+        <div class="drapo"></div>
+        <p style="text-align:center;margin-bottom:0px;margin-top:4px">ES</p>
+    </div>
+</div>
+
+  <a href="javascript:togglePage(Q19)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16 w3-hover-nuit w3-hover-text-capucine"><span class="helpButton">Help</span></a>
+  <a href="javascript:togglePage(Q20)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16 w3-hover-nuit w3-hover-text-capucine"><span id="credButton">Credits</span></a>
+  <!-- <a href="javascript:togglePage(Q18)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16 w3-hover-nuit w3-hover-text-capucine"><span id="refButton">References</span></a> -->
+</nav>
+
+
+
+	<!-- Header -->
+  <div class="w3-container w3-row-padding w3-white w3-hide-small w3-hide-medium" style="padding:0px 16px">
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-left w3-hover-white" onclick="w3_open()" style="font-size: 24px;padding-left:0px">
+      <span class="icon-burger-24"></span>
+    </a>
+	<div class="w3-bar-item w3-hover-opacity w3-right w3-hide-small" style="height:59px">
+		 <p style="text-align:center;margin-bottom:0px;margin-top:11px"><a href="http://www.oce.global" target="_blank"><img src="./img/ico_OCE.jpg" alt="OCE" style="width:64px"></a>
+	</div>
+	<!-- Second language selector -->
+	<div class="w3-bar-item w3-right w3-hide-small w3-dropdown-hover w3-text-nuit" style="height:59px; margin-right:24px">
+		 <p style="text-align:right; margin-bottom:0px; margin-top:14px" id="newLang">EN</p>
+		<div class="w3-dropdown-content w3-bar-block" style="margin-top:11px">
+		<div class="w3-container w3-hover-text-gris" onClick="changeLang(EN)">English</div>
+		<div class="w3-container w3-hover-text-gris" onClick="changeLang(FR)">Français</div>
+		<div class="w3-container w3-hover-text-gris" onClick="changeLang(DE)">Deutsch</div>
+		<div class="w3-container w3-hover-text-gris" onClick="changeLang(ES)">Español</div>
+		</div>
+	</div>
+
+	<div class="w3-bar-item" style="padding:8px 16px;height:59px">
+		  <h1 style="margin-top:13px; position:absolute" onClick="resetMain()" id="mainTitle">TITLE</h1>
+	</div>
+
+  </div><!-- Header -->
+
+  <!-- pseudo-sidebar for smartphone view -->
+  <div class="w3-center w3-sidebar w3-hide-large w3-col s2 m2" style="height: 42px; min-width:96px">
+	<div class="w3-container" style="padding: 0px 8px; line-height:1.5em">
+		<a href="javascript:void(0)" class="w3-bar-item w3-button w3-left" onclick="w3_open()" style="font-size: 24px; padding:0px; margin-top:6px">
+		  <span class="icon-burger-24"></span>
+		</a>
+		<div class="w3-bar-item w3-hover-opacity w3-right">
+			 <p style="text-align:center;margin-bottom:0px;margin-top:6px"><a href="http://www.oce.global" target="_blank"><img src="./img/ico_OCE.jpg" alt="OCE" style="width:46px"></a></p>
+		</div>
+	</div>
+  </div>
+
+
+	<!-- container Q0 "Homepage" -->
+	<div style="width:100%" id="Q0">
+		<!-- Desktop view -->
+		<div style="width:100%; padding:40px" class="w3-hide-medium w3-hide-small">
+			<div class="w3-container w3-white" style="max-width:800px; margin-left:auto; margin-right:auto">
+				<h2 class="w3-text-capucine welcomeButton" style="padding:20px"></h2>
+				<div class="w3-text-nuit helpDesc" style="padding:20px"></div>
+				<div class="w3-bar-block w3-center" style="padding:20px">
+					<a href="./pdf/cards_FR.pdf" target="_blank" class="sourcePDF"><div class="w3-button w3-round-small w3-gravier w3-hover-capucine downButton"></div></a>
+					<div class="w3-button w3-round-small w3-gravier w3-hover-capucine startButton" onClick="letsGo()"></div>
+				</div>
+			</div>
+		</div>
+		<!-- Smartphone view -->
+		<div style="width:100%; padding:0px" class="w3-hide-large">
+			<div class="w3-container w3-white" style="max-width:800px; margin-left:auto; margin-right:auto">
+				<h1 class="w3-text-capucine welcomeButton" style="padding:20px; text-align:center; width:100%"></h1>
+				<div class="w3-text-nuit helpDesc" style="padding:0px 20px; line-height:1.5em"></div>
+				<div class="w3-bar-block w3-center" style="padding:20px">
+					<a href="./pdf/cards_FR.pdf" target="_blank" class="sourcePDF"><div class="w3-button w3-round-small w3-gravier w3-hover-capucine downButton"></div></a>
+					<div class="w3-button w3-round-small w3-gravier w3-hover-capucine startButton" onClick="letsGo()"></div>
+				</div>
+			</div>
+		</div>
+	</div><!-- container Q0 "Homepage" -->
+
+	<!-- container Q1 "gaming Mat" -->
+	<div style="width:100%; line-height:0.1em; background-color: rgba(0,0,0,0)!important;" id="Q1">
+			<figure style="max-width:1366px; padding:0px; margin:0px auto" id="interactiveWin">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="selectWorld" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1366 709" preserveAspectRatio="xMinYMin meet" style=" line-height:1.8em">
+				</svg>
+			</figure>
+	</div><!-- container Q1 "gaming Mat" -->
+
+	<!-- container Q2 "fullScreen Mat" -->
+	<div style="width:100%; line-height:0.1em; background-color:#FFF" id="Q2">
+			<figure style="max-width:1366px; padding:0px; margin:0px auto" id="interactiveWin2">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="selectWorldFullScreen" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1366 709" preserveAspectRatio="xMinYMin meet" style=" line-height:1.8em">
+				</svg>
+			</figure>
+	</div><!-- container Q2 "fullScreen Mat" -->
+
+	<!-- container Q19 "Help" -->
+	<div style="width:100%;padding:16px" id="Q19">
+		<h3 class="w3-text-gris">#How-To</h3>
+		<h3 class="w3-text-nuit helpButton">Help</h3>
+		<span class="helpDesc" style="margin-top:0px">help</span><br/>
+		<div class="w3-container w3-row-padding w3-center" style="width:100%;padding:16px">
+			<!-- back -->
+			<div class="w3-button w3-round-small w3-gravier w3-hover-capucine OCE-ico" onClick="togglePage(Q1)">
+				<span class="playButton">Play</span>
+			</div>
+		</div>
+	</div><!-- container Q19 "Help" -->
+
+	<!-- container Q20 "Credits" -->
+	<div style="width:100%" id="Q20">
+		<div style="padding:0px 20px"> <!-- Text -->
+			<h3 class="w3-text-nuit" id="credButton">Credits</h3>
+			<p class="credDesc">
+			</p>
+		</div>
+		<div class="w3-row-padding" style="max-width:1200px; margin-left:auto; margin-right:auto;">
+			<div class="w3-third w3-center">
+				<img src="./img/logo-oce-baseline.png" alt="logo OCE" style="max-width:100%;height:auto;max-height:90px">
+			</div>
+			<div class="w3-third w3-center">
+				<img src="./img/logo-kheiron-consulting.png" alt="logo Kheiron Consulting" style="max-width:100%;height:auto;max-height:90px">
+			</div>
+			<div class="w3-third w3-center">
+				<img src="./img/logo--mareva-sacoun.png" alt="logo Mareva Sacoun" style="max-width:100%;height:auto;max-height:90px">
+			</div>
+		</div>
+		<p style="margin: 0;">&nbsp;</p>
+		<div class="w3-container" style="padding-right:20px"> <!-- Text -->
+			<div class="w3-right">
+				<img src="./img/creative.png" alt="Creative Commons" style="max-width:100%;height:auto;max-height:40px">
+			</div>
+			<h3 class="w3-text-nuit" id="refButton">References</h3>
+			<!-- <span class="w3-text-gravier">&#9866;</span> -->
+			<p class="refDesc" >
+			</p>
+		</div>
+		<div id="partnDesc" style="padding:0px 20px"> <!-- Text -->
+			<h3 class="w3-text-nuit">Partners</h3>
+			<div class="w3-container w3-center" style="margin-bottom:30px;">
+				<div class="w3-col l3 m4 s6 w3-center">
+					<img src="./img/logo-lamap.png" alt="logo Fondation LAMAP" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-meteo-france.png" alt="logo Météo France" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-ird.png" alt="logo IRD" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-meteo-et-climat.png" alt="logo Météo et Climat" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-ipcc.png" alt="logo IPCC" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-ipsl.png" alt="logo IPSL" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-pik.png" alt="logo PIK" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-iap.png" alt="logo IAP" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-luciole.png" alt="logo Fondation Luciole" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-fondation-prince-albert.png" alt="logo Fondation Albert II" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-siemens-stiftung.png" alt="logo Siemens Stiftung" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+				<div class="w3-col l3 m4 s6 w3-center" style="margin-bottom:30px;">
+					<img src="./img/logo-casden.png" alt="logo CASDEN" style="max-width:100%;height:auto;max-height:90px">
+				</div>
+			</div>
+		</div>
+		<!-- view selectors -->
+		<div class="w3-container w3-row-padding w3-center" style="width:100%;padding:16px">
+			<!-- back -->
+			<div class="w3-button w3-round-small w3-gravier w3-hover-capucine OCE-ico" onClick="togglePage(Q1)">
+				<span class="playButton">Play</span>
+			</div>
+		</div>
+	</div><!-- container Q20 "Credits" -->
+
+
+</div><!-- Global container -->
+
+<script>
+	<!-- initialise -->
+    changeLang("FR");
+	resetMain();
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+    if (mySidebar.style.display === 'block') {
+        mySidebar.style.display = 'none';
+    } else {
+        mySidebar.style.display = 'block';
+    }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>

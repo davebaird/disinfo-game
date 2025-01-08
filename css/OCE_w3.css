@@ -1,0 +1,477 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(Nunito-Regular.ttf);
+}
+@font-face {
+    font-family: OCEicon;
+    src: url(oce-icon.ttf);
+}
+@font-face {
+    font-family: OpenSans;
+    src: url(OpenSans-Regular.ttf);
+}
+body {
+	background-color: #FFF;
+	font-family: "Nunito";
+	color: #313C45;
+}
+h1 {
+	text-transform: uppercase;
+	font-size: 19px;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	display: inline-block;
+	line-height: 0.9;
+	vertical-align: middle;
+	margin: 0px;
+	color: #313C45;
+	font-family: OpenSans;
+}
+h2 {
+	text-transform: uppercase;
+	font-size: 19px;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	display: inline-block;
+	line-height: 0.9;
+	vertical-align: middle;
+	margin: 0px;
+	color: #313C45;
+	font-family: OpenSans;
+}
+h3 {
+	color:#AA7A46!important;
+	font-weight: bold!important;
+	text-transform: uppercase;
+	font-size: 20px;
+	color: #313C45;
+	font-family: OpenSans;
+}
+@media (max-width:600px){
+h3 {
+	font-size: 16px;
+}}
+@media (max-width:992px){
+/* h1 { */
+	/* font-size: 14px; */
+	/* display: block; */
+	/* line-height: 1.0; */
+/* } */
+h2 {
+	font-size: 11px; 
+	color: #75909E; 
+}
+}
+#Q1 figure {margin-left:auto; margin-right:auto;}
+/* @media (min-width: 993px){#Q1 figure {margin-left:auto; margin-right:auto;}} */
+@media (max-width: 600px){#Q1 figure {margin-left:0px;}}
+
+a {
+	text-decoration: none;
+}
+input {
+	padding: 0px 8px;
+}
+.hidden {
+	display: none;
+}
+.active {
+	display: block;
+}
+.shortcut {
+	line-height:1em;
+	padding:2px;
+}
+[type="radio"],[type="checkbox"] {
+	margin: 0px 16px 0px 64px;
+}
+nav .w3-button:hover{
+	color:#EC6661;
+}
+.w3-button {
+	text-transform: uppercase;	
+	font-size: 13px;
+	letter-spacing: 1.1px;
+	font-family: "OpenSans";
+}
+.text-overflow-center {
+    display: block;
+	text-align: center;
+    white-space: nowrap;
+	text-transform: uppercase;	
+	font-size: 12px;
+	letter-spacing: 1.1px;
+}
+.text-overflow-center:before {
+    content: "";
+    margin-left: -100%;
+}
+.text-overflow-center:after {
+    content: "";
+    margin-right: -100%;
+}
+.pin-map:hover {
+	cursor: pointer;
+}
+.ZoomReference {
+	font-size: 8px;
+	color:#3A4851 ;
+}
+
+/* language drapo */
+.drapo {
+	margin:4px auto 0px; 
+	height:33px; 
+	width:33px;
+	background-image:url("../img/drapo.png");
+}
+#EN>.drapo {
+	background-position:0px 0px; 
+}
+#EN:hover>.drapo, #EN.drapoActive>.drapo {
+	background-position:33px 0px; 
+}
+#FR>.drapo {
+	background-position:0px 99px; 
+}
+#FR:hover>.drapo, #FR.drapoActive>.drapo {
+	background-position:33px 99px; 
+}
+#ES>.drapo {
+	background-position:0px 66px; 
+}
+#ES:hover>.drapo, #ES.drapoActive>.drapo {
+	background-position:33px 66px; 
+}
+#DE>.drapo {
+	background-position:0px 33px; 
+}
+#DE:hover>.drapo, #DE.drapoActive>.drapo {
+	background-position:33px 33px; 
+}
+
+.w3-nuit,.w3-hover-nuit:hover{color:#FFF!important;background-color:#313C45!important}
+.w3-capucine,.w3-hover-capucine:hover{color:#FFF!important;background-color:#EC6661!important}
+.w3-ocre,.w3-hover-ocre:hover{color:#FFF!important;background-color:#AA7A46!important}
+.w3-terre,.w3-hover-terre:hover{color:#FFF!important;background-color:#966A5C!important}
+.w3-lichen,.w3-hover-lichen:hover{color:#FFF!important;background-color:#65A696!important}
+.w3-foret,.w3-hover-foret:hover{color:#FFF!important;background-color:#009E92!important}
+.w3-glacier,.w3-hover-glacier:hover{color:#FFF!important;background-color:#00ACBE!important}
+.w3-ocean,.w3-hover-ocean:hover{color:#FFF!important;background-color:#3D8BBE!important}
+.w3-gravier,.w3-hover-gravier:hover{color:#FFF!important;background-color:#536570!important}
+.w3-grismoy,.w3-hover-grismoy:hover{color:#FFF!important;background-color:#DDDDDD!important}
+.w3-grisclair,.w3-hover-grisclair:hover{color:#3A4851!important;background-color:#F5F5F5!important}
+.w3-text-nuit,.w3-hover-text-nuit:hover{color:#313C45!important}
+.w3-text-capucine,.w3-hover-text-capucine:hover{color:#EC6661!important}
+.w3-text-ocre,.w3-hover-text-ocre:hover{color:#AA7A46!important}
+.w3-text-terre,.w3-hover-text-terre:hover{color:#966A5C!important}
+.w3-text-lichen,.w3-hover-text-lichen:hover{color:#65A696!important}
+.w3-text-foret,.w3-hover-text-foret:hover{color:#009E92!important}
+.w3-text-glacier,.w3-hover-text-glacier:hover{color:#00ACBE!important}
+.w3-text-ocean,.w3-hover-text-ocean:hover{color:#3D8BBE!important}
+.w3-text-gravier,.w3-hover-text-gravier:hover{color:#536570!important}
+.w3-text-gris,.w3-hover-text-gris:hover{color:#75909E!important}
+.w3-text-grismoy,.w3-hover-text-grismoy:hover{color:#DDDDDD!important}
+.w3-text-grisclair,.w3-hover-text-grisclair:hover{color:#F5F5F5!important}
+.w3-border-nuit,.w3-hover-border-nuit:hover{border-color:#313C45!important}
+.w3-border-capucine,.w3-hover-border-capucine:hover{border-color:#EC6661!important}
+.w3-border-ocre,.w3-hover-border-ocre:hover{border-color:#AA7A46!important}
+.w3-border-terre,.w3-hover-border-terre:hover{border-color:#966A5C!important}
+.w3-border-lichen,.w3-hover-border-lichen:hover{border-color:#65A696!important}
+.w3-border-foret,.w3-hover-border-foret:hover{border-color:#009E92!important}
+.w3-border-glacier,.w3-hover-border-glacier:hover{border-color:#00ACBE!important}
+.w3-border-ocean,.w3-hover-border-ocean:hover{border-color:#3D8BBE!important}
+.w3-border-gravier,.w3-hover-border-gravier:hover{border-color:#536570!important}
+.w3-border-grismoy,.w3-hover-border-grismoy:hover{border-color:#DDDDDD!important}
+.w3-border-grisclair,.w3-hover-border-grisclair:hover{border-color:#F5F5F5!important}
+
+.w3-bar .w3-button {
+    padding: 24px;
+}
+.w3-button.OCE-ico {
+	padding-top: 0px;
+	padding-bottom: 0px;	
+	height: 40px;
+	line-height:40px;
+	margin-right: 8px;
+}
+.w3-button.OCE-ico span {
+	vertical-align: middle;
+	font-size: 12px;
+}
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+
+.input {
+  font-family: OpenSans;
+  padding: 0.5em;
+  background-color: #FFF;
+  border: 2px solid #75909E;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  color: #75909E;
+}
+.input-empty {
+  font-size: 14px;
+  font-size: max(14px, 1em);
+  color: #75909E;
+}
+.input-full {
+  font-size: 16px;
+  font-size: max(16px, 1em);
+  color: #313C45;
+}
+
+/* audio::-webkit-media-controls-timeline { */
+  /* background-color: #000; */
+/* } */
+/* input[type="range"]::-webkit-slider-thumb { */
+/* width: 5px; */
+/* border-radius: 5px; */
+/* background-color: #0F0; */
+/* } */
+/* audio::-webkit-media-controls-volume-slider { */
+  /* background-color: #F00; */
+/* } */
+
+
+/* OCE icons */
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'OCEicon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-rotate-64:before {
+  content: "\e92a";
+}
+.icon-arrow4-up-14:before {
+  content: "\e921";
+}
+.icon-arrow1-left-14:before {
+  content: "\e90b";
+}
+.icon-arrow1-up-14:before {
+  content: "\e90c";
+}
+.icon-arrow1-down-14:before {
+  content: "\e90d";
+}
+.icon-arrow1-right-14:before {
+  content: "\e90e";
+}
+.icon-corner-24:before {
+  content: "\e939";
+}
+.icon-corner-inverse-24:before {
+  content: "\e93a";
+}
+.icon-play-24:before {
+  content: "\e93b";
+}
+.icon-pause-24:before {
+  content: "\e93c";
+}
+.icon-download-24:before {
+  content: "\e92d";
+}
+.icon-star-filled-24:before {
+  content: "\e92b";
+}
+.icon-star-24:before {
+  content: "\e92c";
+}
+.icon-balance-24:before {
+  content: "\e90f";
+}
+.icon-target-24:before {
+  content: "\e910";
+}
+.icon-circle-24:before {
+  content: "\e911";
+}
+.icon-check-24:before {
+  content: "\e912";
+}
+.icon-check-circle-24:before {
+  content: "\e913";
+}
+.icon-smiley-satisfied-24:before {
+  content: "\e914";
+}
+.icon-help-24:before {
+  content: "\e915";
+}
+.icon-help-circle-24:before {
+  content: "\e916";
+}
+.icon-attention-circle-24:before {
+  content: "\e917";
+}
+.icon-reload-24:before {
+  content: "\e918";
+}
+.icon-arrow2-up-24:before {
+  content: "\e919";
+}
+.icon-arrow1-right-24:before {
+  content: "\e91a";
+}
+.icon-arrow2-down-24:before {
+  content: "\e91b";
+}
+.icon-arrow1-left-24:before {
+  content: "\e91c";
+}
+.icon-plus-24:before {
+  content: "\e91d";
+}
+.icon-cross-24:before {
+  content: "\e91e";
+}
+.icon-burger-24:before {
+  content: "\e91f";
+}
+.icon-arrrow3-right-30:before {
+  content: "\e922";
+  color: #536570;
+}
+.icon-arrow3-left-30:before {
+  content: "\e923";
+  color: #536570;
+}
+.icon-footprint02-32:before {
+  content: "\e93d";
+}
+.icon-screen-32:before {
+  content: "\e93e";
+}
+.icon-timer-32:before {
+  content: "\e93f";
+}
+.icon-smiley-sad-32:before {
+  content: "\e940";
+}
+.icon-smiley-happy-32:before {
+  content: "\e941";
+}
+.icon-pause-32:before {
+  content: "\e942";
+}
+.icon-storm-32:before {
+  content: "\e943";
+}
+.icon-code-32:before {
+  content: "\e944";
+}
+.icon-molecule-32:before {
+  content: "\e945";
+}
+.icon-erosion-32:before {
+  content: "\e938";
+}
+.icon-plane-32:before {
+  content: "\e935";
+}
+.icon-pedestrian-32:before {
+  content: "\e936";
+}
+.icon-drone-32:before {
+  content: "\e937";
+}
+.icon-slick-32:before {
+  content: "\e92e";
+}
+.icon-shell-32:before {
+  content: "\e92f";
+}
+.icon-dissolution-32:before {
+  content: "\e930";
+}
+.icon-leaf-32:before {
+  content: "\e931";
+}
+.icon-lung-32:before {
+  content: "\e932";
+}
+.icon-sediment-32:before {
+  content: "\e933";
+}
+.icon-glass-gas-32:before {
+  content: "\e934";
+}
+.icon-land-32:before {
+  content: "\e924";
+}
+.icon-tap-32:before {
+  content: "\e925";
+}
+.icon-footprint-32:before {
+  content: "\e926";
+}
+.icon-target-32:before {
+  content: "\e920";
+}
+.icon-balance-32:before {
+  content: "\e900";
+}
+.icon-location-filled-32:before {
+  content: "\e901";
+}
+.icon-location-32:before {
+  content: "\e902";
+}
+.icon-satellite-32:before {
+  content: "\e903";
+}
+.icon-shopping-32:before {
+  content: "\e904";
+}
+.icon-house-32:before {
+  content: "\e905";
+}
+.icon-car-32:before {
+  content: "\e906";
+}
+.icon-fooding-32:before {
+  content: "\e907";
+}
+.icon-people-32:before {
+  content: "\e908";
+}
+.icon-elevation-32:before {
+  content: "\e909";
+}
+.icon-flood-32:before {
+  content: "\e90a";
+}
+.icon-question-45:before {
+  content: "\e929";
+  color: #b4c8d1;
+}
+.icon-arrow3-left-45:before {
+  content: "\e927";
+  color: #536570;
+}
+.icon-arrow3-right-45:before {
+  content: "\e928";
+  color: #536570;
+}
