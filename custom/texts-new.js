@@ -89,9 +89,9 @@ textLib = [
 		"won":"Le congélateur s’ouvre&hellip; <strong>Piochez la carte 58</strong>.",
 		},
 	"EN":{
-		"desc":"A 5-letter code is required, all lowercase.",
-		"answer":"glace",
-		"hint":"Ask Father Fouras for help!",
+		"desc":"A 3-letter code is required, all lowercase.",
+		"answer":"ice",
+		"hint":"Ask Père Fouras for help!",
 		"won":"The freezer opens&hellip; <strong>Draw card 58.</strong>",
 		},
 	"DE":{
@@ -152,13 +152,13 @@ textLib = [
 	"type":"sfx",
 	"FR":{
 		"desc":"C'est l'heure d'écouter le jeu des 999€ !",
-		"src":"custom/sono_FR.mp3",
+		"src":"./custom/sono_FR.mp3",
 		"sub":"Voici les réponses possibles :",
 		"won":"",
 		},
 	"EN":{
 		"desc":"It's time to listen to the €999 game!",
-		"src":"custom/sono_FR.mp3",
+		"src":"./custom/sono_FR.mp3",
 		"sub":"Here are the possible answers:",
 		"won":"",
 		},
@@ -344,12 +344,12 @@ textLib = [
 	"type":"video",
 	"FR":{
 		"desc":"Un scientifique a quelque chose à vous dire&hellip;",
-		"src":"custom/mov_FR.mp4",
+		"src":"./custom/mov_FR.mp4",
 		"won":"",
 		},
 	"EN":{
 		"desc":"A scientist has something to tell you&hellip;",
-		"src":"custom/mov_FR.mp4",
+		"src":"./custom/mov_FR.mp4",
 		"won":"",
 		},
 	"DE":{

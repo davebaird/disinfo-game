@@ -43,7 +43,7 @@ function resetMain(){
   wrongMiniGame = false;
   chrono = chronoInit;
   today = new Date();
-  nPenalty = 0;	
+  nPenalty = 0;
   currentCard = 0;
   hintsUsed = 0;
   currentAction = "BF"; // briefing
@@ -66,14 +66,14 @@ function updateMat(){
 	var myWinW = window.innerWidth;
 	document.getElementById("globalContainer").style = "background-image: url(img/back"+
 		(currentPage == "Q1" && veilOn ? "-veil" : "")+".png); min-height:100%";
-	
+
 	if (myWinW >= window.innerHeight) {
-	
+
 		var blah = svgGrad;
 		var blah2 = svgGrad2;
 		var veil = false;
 		var tmp = getNeedle(textLib,"ID",currentCard);
-		
+
 		if (!smartPhone) { // Desktop view
 			document.getElementById("interactiveWin").style = "padding:0px; margin:0px auto; max-width:"+
 				(Math.min(1366, Math.floor(1366*myWinH/709.)))+"px";
@@ -81,8 +81,8 @@ function updateMat(){
 				Math.floor(1366*myWinH/709.)+"px";
 			var elem = document.getElementById("selectWorld");
 			elem.setAttribute("viewBox", "0 0 1366 709");
-			
-		
+
+
 			// default view (mission / clock / buttons)
 			if (currentAction != "MI") {
 				blah += addRoundRect(612,-4,140,40,
@@ -105,7 +105,7 @@ function updateMat(){
 					"style=\"font-size:11px; text-transform: uppercase; font-weight:bold; letter-spacing:1px; font-family:OpenSans\" "+
 					(pausedGame ? "" : "class=\"pin-map\" onclick=\"changeView('GU')\"")+">"+
 					textGUI[lang][".giveUpButton"]+"</text>";
-				
+
 			// interaction tools (question / form / buttons)
 			if (isInside(currentAction, ["DV","DV1","IT","ID","CF"])){
 				blah += "<rect x=\"333\" y=\"408\" width=\"700\" height=\"250\" fill=\"white\" stroke=\"none\" />";
@@ -122,9 +122,9 @@ function updateMat(){
 					"</span>"+
 					"</foreignObject>";
 				blah += addRoundRect(333+362,408+128,120,40,"#EC6661",textGUI[lang][".OKButton"],"class=\"pin-map\" onclick=\"checkAnswer()\" ");
-				blah += addRoundRect(333+492,408+128,120,40,"#313C45",textGUI[lang][".cancelButton"],"class=\"pin-map\" onclick=\"changeView()\" ");		
+				blah += addRoundRect(333+492,408+128,120,40,"#313C45",textGUI[lang][".cancelButton"],"class=\"pin-map\" onclick=\"changeView()\" ");
 			};
-					
+
 			// popin
 			switch (currentAction) {
 				// big boxes
@@ -150,7 +150,7 @@ function updateMat(){
 					blah += "<text x=\"592\" y=\"469\" fill=\"#313C45\" "+
 						"style=\"font-size:14px; text-anchor:middle; text-transform:uppercase; font-family:OpenSans\" >"+textGUI[lang][".timeButton"]+"</text>";
 					blah += "<text x=\"592\" y=\"493\" fill=\"#FFF\" "+
-						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+textClock((chronoInit-chrono)/10)+"</text>";					
+						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+textClock((chronoInit-chrono)/10)+"</text>";
 					// hints used
 					blah += "<rect x=\"699\" y=\"367\" width=\"150\" height=\"150\" fill=\"#75909E\" stroke=\"none\" />";
 					blah += "<text x=\"774\" y=\"444\" fill=\"#FFF\" "+
@@ -158,7 +158,7 @@ function updateMat(){
 					blah += "<text x=\"774\" y=\"469\" fill=\"#313C45\" "+
 						"style=\"font-size:14px; text-anchor:middle; text-transform:uppercase; font-family:OpenSans\" >"+textGUI[lang][".hintButton"]+"</text>";
 					blah += "<text x=\"774\" y=\"493\" fill=\"#FFF\" "+
-						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+hintsUsed+"</text>";				
+						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+hintsUsed+"</text>";
 					break;
 				case "IT1": // play SFX
 					blah += bigBox();
@@ -166,13 +166,13 @@ function updateMat(){
 					blah += addTextBlobCentred(283+40,129+40,800-80,32,"#313C45",
 						"<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">"+textGUI[lang][".subIT"]+"&nbsp;>&nbsp;</span>"+
 						tmp[lang].desc+"</span>");
-					blah += "<image x=\"608\" y=\"352\" xlink:href=\"custom/hint_sfx.png\""+ 
+					blah += "<image x=\"608\" y=\"352\" xlink:href=\"custom/hint_sfx.png\""+
 						" width=\"150\" height=\"200\" />";
 					blah += addTextBlobCentred(283+40,300,800-80,20,"#313C45",tmp[lang].sub);
 					blah += "<foreignObject x=\"538\" y=\"222\" width=\"290\" height=\"40\" >"+
 						"<audio controls>"+
-						"<source src=\"custom/sfx_"+lang+".ogg\" type=\"audio/ogg\">"+
-						"<source src=\"custom/sfx_"+lang+".mp3\" type=\"audio/mpeg\">"+
+						"<source src=\"./custom/sfx_"+lang+".ogg\" type=\"audio/ogg\">"+
+						"<source src=\"./custom/sfx_"+lang+".mp3\" type=\"audio/mpeg\">"+
 						"Your browser does not support the audio element."+
 						"</audio>"+
 						"</foreignObject>";
@@ -193,13 +193,13 @@ function updateMat(){
 							"</video>"+
 							"</foreignObject>";
 						blah2 += "<text id=\"video1PlayButton\" x=\"150\" y=\"640\" fill=\"#FFF\" "+
-						"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";	
+						"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";
 						blah2 += "<text id=\"video1PlayState\" x=\"1180\" y=\"634\" fill=\"#FFF\" "+
-						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";	
+						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";
 						blah2 += "<text id=\"video1PlayDuration\" x=\"1232\" y=\"634\" fill=\"#75909E\" "+
 						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >/"+textClock(0)+"</text>";
 						blah2 += "<line x1=\"184\" y1=\"630\" x2=\"1124\" y2=\"630\" style=\"stroke:#75909E; stroke-width:4\"  id=\"video2State\" />";
-						blah2 += "<line x1=\"184\" y1=\"630\" x2=\"185\" y2=\"630\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video2Progress\" />";	
+						blah2 += "<line x1=\"184\" y1=\"630\" x2=\"185\" y2=\"630\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video2Progress\" />";
 						blah2 += addWhiteButton(1320,20,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 						if (!smartPhone) {blah2 += addWhiteButton(1284,20,"&#xE93A","class=\"pin-map\" onclick=\"screenVid()\"");};
 					if (!smartPhone)  {
@@ -216,13 +216,13 @@ function updateMat(){
 							"</video>"+
 							"</foreignObject>";
 						blah += "<text id=\"video1PlayButton\" x=\"403\" y=\"528\" fill=\"#FFF\" "+
-						"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";	
+						"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";
 						blah += "<text id=\"video1PlayState\" x=\"900\" y=\"524\" fill=\"#FFF\" "+
-						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";	
+						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";
 						blah += "<text id=\"video1PlayDuration\" x=\"960\" y=\"524\" fill=\"#75909E\" "+
 						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >/"+textClock(0)+"</text>";
 						blah += "<line x1=\"436\" y1=\"520\" x2=\"846\" y2=\"520\" style=\"stroke:#75909E; stroke-width:4\" id=\"video1State\" />";
-						blah += "<line x1=\"436\" y1=\"520\" x2=\"437\" y2=\"520\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video1Progress\" />";	
+						blah += "<line x1=\"436\" y1=\"520\" x2=\"437\" y2=\"520\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video1Progress\" />";
 						blah += addWhiteButton(1042,156,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 						blah += addWhiteButton(1006,156,"&#xE939","class=\"pin-map\" onclick=\"screenVid()\"");
 					};
@@ -250,7 +250,7 @@ function updateMat(){
 							blah2 += addTextBlobCentred(283+40,350,720,70,"#FFF",textGUI[lang][".cantIT3"]);
 							blah2 += addRectangle(623,420,120,40,"#EC6661",textGUI[lang][".continueButton"],"class=\"pin-map\" onclick=\"retryMiniGame()\" ");
 						};
-						blah2 += "</g>";	
+						blah2 += "</g>";
 						blah2 += addWhiteButton(1320,20,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 						if (!smartPhone) {blah2 += addWhiteButton(1284,20,"&#xE93A","class=\"pin-map\" onclick=\"screenVid()\"");}
 					if (!smartPhone) { // bigBox only
@@ -275,14 +275,14 @@ function updateMat(){
 							blah += addTextBlobCentred(283+40,350,720,70,"#FFF",textGUI[lang][".cantIT3"]);
 							blah += addRectangle(623,420,120,40,"#EC6661",textGUI[lang][".continueButton"],"class=\"pin-map\" onclick=\"retryMiniGame()\" ");
 						};
-						blah += "</g>";	
+						blah += "</g>";
 						blah += addWhiteButton(1042,156,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 						blah += addWhiteButton(1006,156,"&#xE939","class=\"pin-map\" onclick=\"screenVid()\"");
 					};
 					break;
 				case "IT3a": // lost mini game
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantIT3"]);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantIT3"]);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView('IT3')\"");
 					break;
 				// small boxes
@@ -290,58 +290,58 @@ function updateMat(){
 					blah += smallBox();
 					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".giveUpDesc"]);
 					blah += addRectangle(536,396,164,40,"#EC6661",textGUI[lang][".dontGiveUpButton"],"class=\"pin-map\" onclick=\"changeView()\" ");
-					blah += addRectangle(710,396,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");	
+					blah += addRectangle(710,396,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");
 					break;
 				case "PE": // penalty
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".wantPE"]);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".wantPE"]);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"countPenalty()\"");
 					break;
 				case "GO": // game over
 					blah += smallBox();
 					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".timeOutDesc"]);
 					blah += addRectangle(536,396,164,40,"#EC6661",textGUI[lang][".continueButton"],"class=\"pin-map\" onclick=\"startGameAnyway()\" ");
-					blah += addRectangle(710,396,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");	
+					blah += addRectangle(710,396,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");
 					break;
 				case "DV2": // error : card is not a code
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantDV"]+currentCard);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantDV"]+currentCard);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "DV3": // card unlocked : give reward
 					var tmp = getNeedle(textLib,"ID",currentCard);
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",tmp[lang].won);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",tmp[lang].won);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "DV4": // error : wrong code for card
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantDV1"]+currentCard);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantDV1"]+currentCard);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "ID1": // returns hint
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",tmp[lang].hint);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",tmp[lang].hint);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "ID2": // error : no hint for that card
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantID"]+currentCard);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantID"]+currentCard);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "CF2": // error : wrong code + penalty
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantCF"]);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantCF"]);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"countPenalty()\"");
 					break;
 				case "IT3b": // won mini game
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",tmp[lang].won);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",tmp[lang].won);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "IT4": // error : no interaction for that card
 					blah += smallBox();
-					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantIT"]+currentCard);	
+					blah += addTextBlobCentred(523,280,320,144,"#313C45",textGUI[lang][".cantIT"]+currentCard);
 					blah += addWhiteButton(847,259,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				// special
@@ -356,12 +356,12 @@ function updateMat(){
 					break;
 			};
 		} else { // smartPhone view #######################################################################"
-			
+
 			var elem = document.getElementById("selectWorld");
 			elem.setAttribute("viewBox", "0 0 "+myWinW+" "+myWinH);
 			document.getElementById("interactiveWin").style = "padding:0px; margin:0px auto; width:"+
 				myWinW+"px; height:"+myWinH;
-			
+
 			// left sidebar
 			var dx = Math.max(111,myWinW/6); // sidebar width
 			blah += "<rect x=\"0\" y=\"0\" width=\""+dx+"\" height=\""+myWinH+"\" fill=\"#FFF\" stroke=\"none\" />";
@@ -373,14 +373,14 @@ function updateMat(){
 				(pausedGame || veilOn ? "" : "class=\"pin-map\" onclick=\"changeView('GU')\""), pausedGame || (veilOn && currentAction != "GU")); //give up
 			blah += addWhiteButton(20,myWinH-28,"&#xE947",
 				(pausedGame || veilOn ? "" :"class=\"pin-map\" onclick=\"changeView('MI')\""), pausedGame || (veilOn && !isInside(currentAction,["MI","BF"]))); //briefing in-game
-			
+
 			// default view (clock / pause / penalty / interaction tools)
 
 			blah += addClock();
 			blah += addPenaltyButton(362+dx+(myWinW-dx-420)/2,50,"&#xE943"); // penalty
 			blah += addPauseButton(280+dx+(myWinW-dx-420)/2,50,(pausedGame ? "&#xE946;" : "&#xE942" )); // pause/unpause
-			
-				
+
+
 			// interaction tools (question / form / buttons)
 			if (isInside(currentAction, ["DV","DV1","IT","ID","CF"])){
 				blah += "<rect x=\""+(dx+30)+"\" y=\"125\" width=\""+(myWinW-dx-60)+"\" height=\""+(myWinH-155)+"\" fill=\"white\" stroke=\"none\" />";
@@ -396,9 +396,9 @@ function updateMat(){
 					"</span>"+
 					"</foreignObject>";
 				blah += addRoundRect(myWinW-170-120-10,myWinH-100,120,40,"#EC6661",textGUI[lang][".OKButton"],"class=\"pin-map\" onclick=\"checkAnswer()\" ");
-				blah += addRoundRect(myWinW-170,myWinH-100,120,40,"#313C45",textGUI[lang][".cancelButton"],"class=\"pin-map\" onclick=\"changeView()\" ");		
+				blah += addRoundRect(myWinW-170,myWinH-100,120,40,"#313C45",textGUI[lang][".cancelButton"],"class=\"pin-map\" onclick=\"changeView()\" ");
 			};
-					
+
 			// popin
 			switch (currentAction) {
 				// smartPhone => big boxes -> fullScreen
@@ -433,7 +433,7 @@ function updateMat(){
 					blah += "<text x=\""+(myWinW/2-130+60)+"\" y=\""+(myWinH-60)+"\" fill=\"#313C45\" "+
 						"style=\"font-size:14px; text-anchor:middle; text-transform:uppercase; font-family:OpenSans\" >"+textGUI[lang][".timeButton"]+"</text>";
 					blah += "<text x=\""+(myWinW/2-130+60)+"\" y=\""+(myWinH-40)+"\" fill=\"#FFF\" "+
-						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+textClock((chronoInit-chrono)/10)+"</text>";					
+						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+textClock((chronoInit-chrono)/10)+"</text>";
 					// hints used
 					blah += "<rect x=\""+(myWinW/2+10)+"\" y=\""+(myWinH-140)+"\" width=\"120\" height=\"120\" fill=\"#75909E\" stroke=\"none\" />";
 					blah += "<text x=\""+(myWinW/2+10+60)+"\" y=\""+(myWinH-80)+"\" fill=\"#FFF\" "+
@@ -441,7 +441,7 @@ function updateMat(){
 					blah += "<text x=\""+(myWinW/2+10+60)+"\" y=\""+(myWinH-60)+"\" fill=\"#313C45\" "+
 						"style=\"font-size:14px; text-anchor:middle; text-transform:uppercase; font-family:OpenSans\" >"+textGUI[lang][".hintButton"]+"</text>";
 					blah += "<text x=\""+(myWinW/2+10+60)+"\" y=\""+(myWinH-40)+"\" fill=\"#FFF\" "+
-						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+hintsUsed+"</text>";				
+						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+hintsUsed+"</text>";
 					break;
 				case "IT1": // play SFX
 					blah += fullScreen();
@@ -449,7 +449,7 @@ function updateMat(){
 					blah += addTextBlobCentred(30,30,myWinW-60,32,"#313C45",
 						"<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">"+textGUI[lang][".subIT"]+"&nbsp;>&nbsp;</span>"+
 						tmp[lang].desc+"</span>");
-					blah += "<image x=\""+(myWinW/4-75)+"\" y=\"140\" xlink:href=\"custom/hint_sfx.png\""+ 
+					blah += "<image x=\""+(myWinW/4-75)+"\" y=\"140\" xlink:href=\"custom/hint_sfx.png\""+
 						" width=\"150\" height=\"200\" />";
 					blah += addTextBlobCentred(30,60,myWinW/2-40,80,"#313C45",tmp[lang].sub);
 					blah += "<foreignObject x=\""+(myWinW/2-10)+"\" y=\"80\" width=\""+(myWinW/2)+"\" height=\"40\" >"+
@@ -474,17 +474,17 @@ function updateMat(){
 						"</video>"+
 						"</foreignObject>";
 					blah += "<text id=\"video1PlayButton\" x=\"60\" y=\""+(myWinH-30)+"\" fill=\"#FFF\" "+
-					"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";	
+					"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";
 					blah += "<text id=\"video1PlayState\" x=\""+(myWinW-100)+"\" y=\""+(myWinH-34)+"\" fill=\"#FFF\" "+
-					"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";	
+					"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";
 					blah += "<text id=\"video1PlayDuration\" x=\""+(myWinW-40)+"\" y=\""+(myWinH-34)+"\" fill=\"#75909E\" "+
 					"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >/"+textClock(0)+"</text>";
 					blah += "<line x1=\"90\" y1=\""+(myWinH-39)+"\" x2=\""+(myWinW-160)+"\" y2=\""+(myWinH-39)+"\" style=\"stroke:#75909E; stroke-width:4\" id=\"video1State\" />";
-					blah += "<line x1=\"90\" y1=\""+(myWinH-39)+"\" x2=\"91\" y2=\""+(myWinH-39)+"\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video1Progress\" />";	
+					blah += "<line x1=\"90\" y1=\""+(myWinH-39)+"\" x2=\"91\" y2=\""+(myWinH-39)+"\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video1Progress\" />";
 					blah += addWhiteButton(myWinW-30,18,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "IT3": // play GAME
-					blah += fullScreen();						
+					blah += fullScreen();
 					blah += addTextBlobCentred(0,33,myWinW,32,"#313C45",
 						"<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">"+textGUI[lang][".subIT"]+"&nbsp;>&nbsp;</span>"+
 						tmp[lang].desc+"</span>");
@@ -505,72 +505,72 @@ function updateMat(){
 						blah += addTextBlobCentred(40,180,myWinW-80,70,"#FFF",textGUI[lang][".cantIT3"]);
 						blah += addRectangle(myWinW/2-60,myWinH-120,120,40,"#EC6661",textGUI[lang][".continueButton"],"class=\"pin-map\" onclick=\"retryMiniGame()\" ");
 					};
-					blah += "</g>";	
+					blah += "</g>";
 					blah += addWhiteButton(myWinW-30,18,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "IT3a": // lost mini game
 					blah += smallBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantIT3"]);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantIT3"]);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView('IT3')\"");
 					break;
-					
+
 				// smartPhone => small boxes ->  phoneBox -------------------------------------------------
 				case "GU": // give up?
 					blah += phoneBox();
 					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".giveUpDesc"]);
 					blah += addRectangle(dx+(myWinW-dx-300)/2,myWinH-80,160,40,"#EC6661",textGUI[lang][".dontGiveUpButton"],"class=\"pin-map\" onclick=\"changeView()\" ");
-					blah += addRectangle(dx+(myWinW-dx-300)/2+180,myWinH-80,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");	
+					blah += addRectangle(dx+(myWinW-dx-300)/2+180,myWinH-80,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");
 					break;
 				case "PE": // penalty
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".wantPE"]);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".wantPE"]);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"countPenalty()\"");
 					break;
 				case "GO": // game over
 					blah += phoneBox();
 					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".timeOutDesc"]);
 					blah += addRectangle(dx+(myWinW-dx-300)/2,myWinH-80,160,40,"#EC6661",textGUI[lang][".continueButton"],"class=\"pin-map\" onclick=\"startGameAnyway()\" ");
-					blah += addRectangle(dx+(myWinW-dx-300)/2+180,myWinH-80,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");	
+					blah += addRectangle(dx+(myWinW-dx-300)/2+180,myWinH-80,120,40,"#313C45",textGUI[lang][".giveUpButton"],"class=\"pin-map\" onclick=\"resetMain()\" ");
 					break;
 				case "DV2": // error : card is not a code
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantDV"]+currentCard);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantDV"]+currentCard);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "DV3": // card unlocked : give reward
 					var tmp = getNeedle(textLib,"ID",currentCard);
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",tmp[lang].won);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",tmp[lang].won);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "DV4": // error : wrong code for card
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantDV1"]+currentCard);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantDV1"]+currentCard);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "ID1": // returns hint
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",tmp[lang].hint);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",tmp[lang].hint);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "ID2": // error : no hint for that card
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantID"]+currentCard);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantID"]+currentCard);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "CF2": // error : wrong code + penalty
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantCF"]);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantCF"]);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"countPenalty()\"");
 					break;
 				case "IT3b": // won mini game
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",tmp[lang].won);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",tmp[lang].won);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				case "IT4": // error : no interaction for that card
 					blah += phoneBox();
-					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantIT"]+currentCard);	
+					blah += addTextBlobCentred(dx+40,40,myWinW-dx-80,myWinH-80,"#313C45",textGUI[lang][".cantIT"]+currentCard);
 					blah += addWhiteButton(myWinW-50,38,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
 					break;
 				default:
@@ -582,14 +582,14 @@ function updateMat(){
 		var fruitz = document.querySelectorAll('.draggable');
 		for (fruit of fruitz){
 			dragElement(fruit);
-		};	
-	} else {// portrait screen	
+		};
+	} else {// portrait screen
 		var ratio = 10.*window.innerWidth/12.;
 		blah = "<rect x=\"20\" y=\"20\" rx=\"7\" ry=\"7\" width=\""+(1366-40)+"\" height=\""+(709-40)+"\" style=\"fill:#FFF;stroke-width:0\"/>";
 		blah += "<foreignObject x=\"40\" y=\"40\" width=\""+(1366-80)+"\" height=\""+(709-80)+"\">" +
 			"<p style=\"color:#313C45; font-size:40px; line-height:1.2em; text-align:center\">"+textGUI[lang][".warningPortrait"]+"</p>"+
 			"<p style=\"color:#313C45; font-size:300px; font-family:OCEicon; text-align:center; margin:0px; line-height:300px\">&#xe92a;</p>"+
-			"</foreignObject>";	
+			"</foreignObject>";
 		replaceInnerHTML("#selectWorld",blah);
 	};
 };
@@ -639,7 +639,7 @@ var x = setInterval(function() {
 	  };
 	  updateClock();
   } else {if (currentAction != "BF") {pauseDuration++;}};
- 
+
   // If the count down is finished, write some text
   // if (distance < 0) {
     // clearInterval(x);
@@ -670,13 +670,13 @@ function changeView(i="none"){
 	// console.log(i);
 	currentAction = i;
 	switch (true) {
-		case (currentAction == "PA") : 
+		case (currentAction == "PA") :
 			pausedGame = !pausedGame ;
 			if (pausedGame == false) {currentAction = "none";}
 			break;
 		default:
 			break;
-	};	
+	};
 	if (currentAction == "none") {
 		currentCard = 0;
 		wrongMiniGame = false;
@@ -729,7 +729,7 @@ function checkAnswer(){
 					if (tmp) {if (tmp[lang].hint) {myAnswer = true;}}; // can use given answer?
 					if (myAnswer) { // returns hint
 						hintsUsed++;
-						changeView("ID1"); 
+						changeView("ID1");
 					} else { changeView("ID2"); // cannot return hint
 					};
 					break;
@@ -744,7 +744,7 @@ function checkAnswer(){
 				default:
 					break;
 			};
-		};	
+		};
 	};
 };
 
@@ -804,14 +804,14 @@ function addButton(x,y,titre,id){
 		linx = (currentAction == "none" || id == "PA" ? linx : "");
 	if (smartPhone) {
 		return "<circle cx=\""+(x+27)+"\" cy=\""+(y+27)+"\" r=\"27\" id=\"myButton"+id+"\" style=\"fill:"+
-			(currentAction == id ? "#EC6661" : (currentAction == "none" || id == "PA" ? 
+			(currentAction == id ? "#EC6661" : (currentAction == "none" || id == "PA" ?
 			"#75909E" : "#BAC7CE" ) )+"\" "+linx+"/>"+
 			"<text x=\""+(x+27)+"\" y=\""+(y+41)+"\" fill=\""+(currentAction == "none" || id == "PA" ? "#FFF" : "rgba(255,255,255,0.6)" )+"\" "+
 					"style=\"font-size:30px; text-anchor:middle; font-family:OCEicon; pointer-events:none\" >"+
 					titre+"</text>";
 	} else {
 		return "<circle cx=\""+(x+55)+"\" cy=\""+(y+55)+"\" r=\"55\" id=\"myButton"+id+"\" style=\"fill:"+
-			(currentAction == id ? "#EC6661" : (currentAction == "none" || id == "PA" ? 
+			(currentAction == id ? "#EC6661" : (currentAction == "none" || id == "PA" ?
 			(veilOn ? "#4C5E68" : "#75909E") : (veilOn ? "#757C81" : "#BAC7CE") ) )+"\" "+linx+"/>"+
 			"<text x=\""+(x+55)+"\" y=\""+(y+82)+"\" fill=\""+(veilOn ? "#838A8F" : (currentAction == "none" || id == "PA" ? "#FFF" : "rgba(255,255,255,0.6)" ) )+"\" "+
 					"style=\"font-size:60px; text-anchor:middle; font-family:OCEicon; pointer-events:none\" >"+
@@ -851,7 +851,7 @@ function addPenaltyButton(x,y,titre){
 		linx = (currentAction == "none" ? linx : "");
 	if (smartPhone) { // smartPhone view
 		return "<rect x=\""+x+"\" y=\""+y+"\" rx=\"2\" ry=\"2\" width=\"48\" height=\"48\" id=\"myButtonPE\" style=\"fill:"+
-			(currentAction == "PE" ? "#EC6661" : (currentAction == "none" ? 
+			(currentAction == "PE" ? "#EC6661" : (currentAction == "none" ?
 			(veilOn ? "#832429" : "#E44545") : (veilOn ? "#757C81" : "#EF8F8F") ) )+
 			";stroke-width:0\" "+linx+"/>"+
 			"<text x=\""+(x+24)+"\" y=\""+(y+41)+"\" fill=\""+(veilOn ? "#838A8F" : (currentAction == "none" ? "#FFF" : "rgba(255,255,255,0.6)") )+"\" "+
@@ -862,7 +862,7 @@ function addPenaltyButton(x,y,titre){
 					textGUI[lang][".subPE"]+"</text>";
 	} else { // Desktop view
 		return "<rect x=\""+x+"\" y=\""+y+"\" rx=\"2\" ry=\"2\" width=\"64\" height=\"64\" id=\"myButtonPE\" style=\"fill:"+
-			(currentAction == "PE" ? "#EC6661" : (currentAction == "none" ? 
+			(currentAction == "PE" ? "#EC6661" : (currentAction == "none" ?
 			// (veilOn ? "#4C5E68" : "#75909E") : (veilOn ? "#757C81" : "#DDDDDD") ) )+
 			(veilOn ? "#832429" : "#E44545") : (veilOn ? "#757C81" : "#EF8F8F") ) )+
 			";stroke-width:0\" "+linx+"/>"+
@@ -876,7 +876,7 @@ function addPenaltyButton(x,y,titre){
 
 };
 
-function addWhiteButton(x,y,titre,linx,special=false){		
+function addWhiteButton(x,y,titre,linx,special=false){
 	return "<text x=\""+(x+12)+"\" y=\""+(y+12)+"\" fill=\""+(special ? "#91A6B1" : "#313C45")+"\" "+
 		"style=\"font-size:"+(smartPhone ? 30 : 25)+"px; text-anchor:middle; font-family:OCEicon\" "+linx+" >"+
 		titre+"</text>";
@@ -942,7 +942,7 @@ function addVignette(id,bigScreen=false) {
 	blah += "<foreignObject x=\""+(myX+(bigScreen ? 20 : 10)-dimCardX/2)+"\" y=\""+(myY+20)+"\" width=\""+(dimCardX-2*(bigScreen ? 20 : 10))+"\" height=\""+(dimCardY-40)+"\" style=\"pointer-events:none; line-height:1em\" >"+
 		"<table style=\"border:none; width:100%; height:100%; vertical-align:center; text-align:center; line-height:1em\" ><tr><td>"+
 		"<span style=\"color:#313C45; font-size:"+(fontSize)+"px; font-family:OpenSans; line-height:1em\" >"+elem[lang]+"</span>"+
-		"</td></tr></table>"+ 
+		"</td></tr></table>"+
 		"</foreignObject>";
 	// pin
 	switch (true) {
@@ -950,10 +950,10 @@ function addVignette(id,bigScreen=false) {
 			blah += "<circle cx=\""+(myX)+"\" cy=\""+(myY+10)+"\" r=\""+(dimPin)+"\" stroke-width=\"0\" fill=\"#2AB0C6\" style=\"pointer-events:none\" />";
 			break;
 		case (elem.x > 0.5) : // drag towards Climate = red pin
-			blah += "<circle cx=\""+(myX)+"\" cy=\""+(myY+10)+"\" r=\""+(dimPin)+"\" stroke-width=\"0\" fill=\"#0B966E\" style=\"pointer-events:none\" />"; 
+			blah += "<circle cx=\""+(myX)+"\" cy=\""+(myY+10)+"\" r=\""+(dimPin)+"\" stroke-width=\"0\" fill=\"#0B966E\" style=\"pointer-events:none\" />";
 			break;
 		default : // no try yet = question mark
-			blah += "<circle cx=\""+(myX)+"\" cy=\""+(myY+10)+"\" r=\""+(dimPin)+"\" stroke-width=\"0\" fill=\"#536570\" style=\"pointer-events:none\" />"; 
+			blah += "<circle cx=\""+(myX)+"\" cy=\""+(myY+10)+"\" r=\""+(dimPin)+"\" stroke-width=\"0\" fill=\"#536570\" style=\"pointer-events:none\" />";
 			blah += "<text x=\""+(myX)+"\" y=\""+(myY+(bigScreen ? 7 : 4)+10)+"\" fill=\"#FFF\" style=\"font-size:"+(fontSize-4)+"px; font-weight:bold; text-anchor:middle\">?</text>";
 			break;
 	};
@@ -992,12 +992,12 @@ function cleanTextArea(){
 };
 
 function playVid(){
-	var myVideo = document.getElementById("video"+(videoFullScreen ? "2" : "1"));  
+	var myVideo = document.getElementById("video"+(videoFullScreen ? "2" : "1"));
 	  if (myVideo.paused) {
-		myVideo.play(); 
+		myVideo.play();
 		replaceInnerHTML("#video1PlayButton", "&#xE93C;") ;
 	  } else {
-		myVideo.pause(); 
+		myVideo.pause();
 		replaceInnerHTML("#video1PlayButton", "&#xE93B;");
 	  }
 };
@@ -1006,12 +1006,12 @@ function screenVid(){
 	videoFullScreen = !videoFullScreen;
 	togglePage(document.querySelector("#Q"+(videoFullScreen ? "2" : "1")));
 };
- 
+
  // --
  // DRAG&DROP
  // --
- 
- 
+
+
  function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   elmnt.onmousedown = dragMouseDown;
@@ -1028,14 +1028,14 @@ function screenVid(){
     document.onmousemove = elementDrag;
   }
 
-  function elementDrag(e) {	  
+  function elementDrag(e) {
 	var rect = document.getElementById("mapNameChart"+(videoFullScreen ? "2" : "1")).getBoundingClientRect(); // get the bounding rectangle
 	// console.log(rect);
 	e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
 	allVignettes[elmnt.id.substr(3)].x = Math.min(Math.max((e.clientX-rect.left)/rect.width, 0.), 1.);
-	allVignettes[elmnt.id.substr(3)].y = Math.min(Math.max((e.clientY-rect.top)/rect.height, 0.), 1.);	
+	allVignettes[elmnt.id.substr(3)].y = Math.min(Math.max((e.clientY-rect.top)/rect.height, 0.), 1.);
 	updateMat();
   }
 
@@ -1046,28 +1046,28 @@ function screenVid(){
 	updateMat();
   }
 }
- 
+
  function checkMiniGame(){
 	 var res = true;
 	 for (var i=0; i<allVignettes.length; i++) {
 		 res = res && ( (allVignettes[i].x > .5) === allVignettes[i].isClim);
 	 };
 	 if (res) {changeView("IT3b");} else {
-		 wrongMiniGame = true; 
+		 wrongMiniGame = true;
 		 changeView("IT3");
 	 };
  };
- 
+
  function retryMiniGame(){
 	 wrongMiniGame = false;
 	 changeView("IT3");
  }
- 
- 
+
+
 // ---
 // MISC TOOLS
 // --
- 
+
 function isInside(key,haystack){
 	var res = false;
 	for (var i=0; i<haystack.length; i++) {res = res || (key == haystack[i]);}
@@ -1076,11 +1076,11 @@ function isInside(key,haystack){
 
 // Toggle active page
 function togglePage(idPage) {
-  // hide all blocks 
+  // hide all blocks
   for (var i=0; i<30; i++) { //brute force all possible pages
     classListExchange("#Q"+i,"active","hidden");
   }
-  
+
   if (!idPage) {idPage = document.querySelector("#Q0");}
   idPage.classList.remove("hidden");
   idPage.classList.add("active");
@@ -1101,7 +1101,7 @@ function changeLang(i){
       replaceInnerHTML("#value-"+x,textGUI[lang][x]);
       replaceInnerHTML("#"+x,textGUI[lang][x]);
       replaceInnerHTML("."+x,textGUI[lang][x]);
-    }    
+    }
   }
   replaceInnerHTML("#legendCardLine","> "+textGUI[lang]["#helpDesc"]);
   var langz=["EN","FR","DE","ES"];
@@ -1126,7 +1126,7 @@ function updateScreen(){
 };
 
 // Find needle in Object haystack
-function getNeedle (haystack, key, value) {  
+function getNeedle (haystack, key, value) {
   // q = haystack.findIndex(function(elem){return elem[key] == value; }); // unsupported by IE
   var q;
   for (var i=0; i<haystack.length; i++) {
