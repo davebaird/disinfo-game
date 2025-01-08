@@ -61,7 +61,7 @@ function resetMain(){
 
 // Update gaming mat
 function updateMat(){
-	smartPhone = (window.innerWidth <= 80);
+	smartPhone = (window.innerWidth <= 800);
 	var myWinH = window.innerHeight-(smartPhone ? 0 : 60);
 	var myWinW = window.innerWidth;
 	document.getElementById("globalContainer").style = "background-image: url(img/back"+
