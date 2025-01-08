@@ -1,4 +1,4 @@
-lang = "FR";
+lang = "EN";
 currentPage = "Q0";
 launchedGame = false;
 pausedGame = true;
