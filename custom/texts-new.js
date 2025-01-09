@@ -198,7 +198,7 @@ textLib = [
 		"hint":"Si A vaut K, B vaut quoi ?",
 		},
 	"EN":{
-		"hint":"If A equals K, what does B equal?",
+		"hint":"Spell it out - a little carelessly.",
 		},
 	"DE":{
 		"hint":"",
@@ -235,6 +235,34 @@ textLib = [
 		"won":"",
 		}
 	},
+	{ // 39
+	"ID":39,
+	"type":"code",
+	"FR":{
+		"desc":"",
+		"answer":"",
+		"hint":"",
+		"won":"",
+		},
+	"EN":{
+		"desc":"A 4-digit code is needed here.",
+		"answer":"2647",
+		"hint":"The safe is locked; some books might help you!",
+		"won":"The safe opens, and you find a valuable item: <br/><strong>draw card 60.</strong>",
+		},
+	"DE":{
+		"desc":"",
+		"answer":"",
+		"hint":"",
+		"won":"",
+		},
+	"ES":{
+		"desc":"",
+		"answer":"",
+		"hint":"",
+		"won":"",
+		}
+	},
 	{ // 40
 	"ID":40,
 	"type":"code",
@@ -245,10 +273,10 @@ textLib = [
 		"won":"Le coffre-fort s’ouvre, vous y trouvez un objet précieux : <br/><strong>piochez la carte 60</strong>.",
 		},
 	"EN":{
-		"desc":"A 4-digit code is needed here.",
-		"answer":"2647",
-		"hint":"The safe is locked; some books might help you!",
-		"won":"The safe opens, and you find a valuable item: <br/><strong>draw card 60.</strong>",
+		"desc":"",
+		"answer":"",
+		"hint":"",
+		"won":"",
 		},
 	"DE":{
 		"desc":"",
@@ -349,7 +377,7 @@ textLib = [
 		},
 	"EN":{
 		"desc":"A scientist has something to tell you&hellip;",
-		"src":"./custom/mov_FR.mp4",
+		"src":"./custom/mov_EN.mp4",
 		"won":"",
 		},
 	"DE":{
