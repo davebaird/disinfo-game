@@ -177,6 +177,8 @@ function updateMat(){
 					blah += "<text x=\"774\" y=\"493\" fill=\"#FFF\" "+
 						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+hintsUsed+"</text>";
 					break;
+
+                /*
 				case "IT1": // play SFX
 					blah += bigBox();
 					blah += addWhiteButton(1042,156,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
@@ -194,6 +196,23 @@ function updateMat(){
 						"</audio>"+
 						"</foreignObject>";
 					break;
+                    */
+
+                    case "IT1": // display text instead of SFX
+                    blah += bigBox();
+                    blah += addWhiteButton(1042, 156, "&#xE91E", "class=\"pin-map\" onclick=\"changeView()\"");
+                    blah += addTextBlobCentred(283 + 40, 129 + 40, 800 - 80, 32, "#313C45",
+                        "<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">" + textGUI[lang][".subIT"] + "&nbsp;>&nbsp;</span>" +
+                        tmp[lang].desc + "</span>");
+                    blah += "<image x=\"608\" y=\"352\" xlink:href=\"custom/hint_sfx.png\"" +
+                        " width=\"150\" height=\"200\" />";
+                    blah += addTextBlobCentred(283 + 40, 300, 800 - 80, 20, "#313C45", tmp[lang].sub);
+                    blah += "<foreignObject x=\"538\" y=\"222\" width=\"290\" height=\"40\">" +
+                        "<div style=\"font-size:14px; color:#313C45; text-align:center;\">During the last 100 years, the Earth has warmed up by about 1ºC, 2ºC, 3ºC or 4ºC?</div>" +
+                        "</foreignObject>";
+                    break;
+
+                /*
 				case "IT2": // play VIDEO
 					var elem = document.getElementById("video1");
 					// full screen video
@@ -244,6 +263,40 @@ function updateMat(){
 						blah += addWhiteButton(1006,156,"&#xE939","class=\"pin-map\" onclick=\"screenVid()\"");
 					};
 					break;
+                */
+
+                    case "IT2": // display text instead of VIDEO
+                    var elem = document.getElementById("video1");
+                    // full screen video
+                    blah2 += addTextBlobCentred(40, 30, 1366 - 80, 32, "#313C45",
+                        "<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">" + textGUI[lang][".subIT"] + "&nbsp;>&nbsp;</span>" +
+                        tmp[lang].desc + "</span>");
+                    blah2 += "<rect x=\"108\" y=\"67\" width=\"1150\" height=\"600\" fill=\"#000\" stroke=\"none\" />";
+                    blah2 += "<foreignObject x=\"150\" y=\"67\" width=\"1065\" height=\"600\">" +
+                        "<div style=\"font-size:18px; color:#FFF; background-color:#000; height:100%; display:flex; justify-content:center; align-items:center;\">" +
+                        "Video playback has been replaced with this text message." +
+                        "</div>" +
+                        "</foreignObject>";
+                    blah2 += addWhiteButton(1320, 20, "&#xE91E", "class=\"pin-map\" onclick=\"changeView()\"");
+                    if (!smartPhone) { blah2 += addWhiteButton(1284, 20, "&#xE93A", "class=\"pin-map\" onclick=\"screenVid()\""); }
+
+                    if (!smartPhone) {
+                        blah += bigBox();
+                        blah += addTextBlobCentred(283 + 40, 129 + 40, 800 - 80, 32, "#313C45",
+                            "<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">" + textGUI[lang][".subIT"] + "&nbsp;>&nbsp;</span>" +
+                            tmp[lang].desc + "</span>");
+                        blah += "<rect x=\"383\" y=\"200\" width=\"600\" height=\"338\" fill=\"#000\" stroke=\"none\" />";
+                        blah += "<foreignObject x=\"383\" y=\"200\" width=\"600\" height=\"338\">" +
+                            "<div style=\"font-size:16px; color:#FFF; background-color:#000; height:100%; display:flex; justify-content:center; align-items:center;\">" +
+                            "This area previously displayed a video. It now shows this message." +
+                            "</div>" +
+                            "</foreignObject>";
+                        blah += addWhiteButton(1042, 156, "&#xE91E", "class=\"pin-map\" onclick=\"changeView()\"");
+                        blah += addWhiteButton(1006, 156, "&#xE939", "class=\"pin-map\" onclick=\"screenVid()\"");
+                    }
+                    break;
+
+
 				case "IT3": // play GAME
 					// full screen video
 						// blah2 += fullScreen();
