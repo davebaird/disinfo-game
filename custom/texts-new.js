@@ -157,7 +157,7 @@ textLib = [
 		"won":"",
 		},
 	"EN":{
-		"desc":"It's time to listen to the €999 game!",
+		"desc":"Pop quiz time!",
 		"src":"./custom/sono_FR.mp3",
 		"sub":"Here are the possible answers:",
 		"won":"",

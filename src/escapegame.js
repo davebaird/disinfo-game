@@ -162,7 +162,7 @@ function updateMat() {
 						"style=\"font-size:20px; text-anchor:middle; font-family:OpenSans\" >"+hintsUsed+"</text>";
 					break;
 
-                /*
+
 				case "IT1": // play SFX
 					blah += bigBox();
 					blah += addWhiteButton(1042,156,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
@@ -172,16 +172,21 @@ function updateMat() {
 					blah += "<image x=\"608\" y=\"352\" xlink:href=\"custom/hint_sfx.png\""+
 						" width=\"150\" height=\"200\" />";
 					blah += addTextBlobCentred(283+40,300,800-80,20,"#313C45",tmp[lang].sub);
-					blah += "<foreignObject x=\"538\" y=\"222\" width=\"290\" height=\"40\" >"+
-						"<audio controls>"+
-						"<source src=\"./custom/sfx_"+lang+".ogg\" type=\"audio/ogg\">"+
-						"<source src=\"./custom/sfx_"+lang+".mp3\" type=\"audio/mpeg\">"+
-						"Your browser does not support the audio element."+
-						"</audio>"+
-						"</foreignObject>";
+					blah += "<foreignObject x=\"538\" y=\"222\" width=\"290\" height=\"60\" >";
+                    if (lang === "FR") {
+						blah += `<audio controls>
+                                    <source src="./custom/sfx_${lang}.ogg" type="audio/ogg">
+                                    <source src="./custom/sfx_${lang}.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>`;
+                    }
+                    else {
+                        blah += "During the last 100 years, the Earth has warmed up by about:";
+                    }
+					blah +=	"</foreignObject>";
 					break;
-                    */
 
+/*
                     case "IT1": // display text instead of SFX
                     blah += bigBox();
                     blah += addWhiteButton(1042, 156, "&#xE91E", "class=\"pin-map\" onclick=\"changeView()\"");
@@ -195,9 +200,10 @@ function updateMat() {
                         "<div style=\"font-size:14px; color:#313C45; text-align:center;\">During the last 100 years, the Earth has warmed up by about 1ºC, 2ºC, 3ºC or 4ºC?</div>" +
                         "</foreignObject>";
                     break;
+                    */
 
-                /*
-				case "IT2": // play VIDEO
+
+				case "IT2_NOT_USED": // play VIDEO
 					var elem = document.getElementById("video1");
 					// full screen video
 						// blah2 += fullScreen();
@@ -247,11 +253,70 @@ function updateMat() {
 						blah += addWhiteButton(1006,156,"&#xE939","class=\"pin-map\" onclick=\"screenVid()\"");
 					};
 					break;
-                */
 
-                    case "IT2": // display text instead of VIDEO
+
+                    case "IT2": // play VIDEO
+					var elem = document.getElementById("video1");
+					// full screen video
+						// blah2 += fullScreen();
+						blah2 += addTextBlobCentred(40,30,1366-80,32,"#313C45",
+							"<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">"+textGUI[lang][".subIT"]+"&nbsp;>&nbsp;</span>"+
+							tmp[lang].desc+"</span>");
+						blah2 += "<rect x=\"108\" y=\"67\" width=\"1150\" height=\"600\" fill=\"#000\" stroke=\"none\" />";
+						blah2 += "<foreignObject x=\"150\" y=\"67\" width=\"1065\" height=\"600\" >"+
+							"<video id=\"video2\" width=\"1065\" onclick=\"playVid()\">"+
+							"<source src=\"custom/mov_"+lang+".ogg\" type=\"video/ogg\">"+
+							"<source src=\"custom/mov_"+lang+".mp4\" type=\"video/mp4\">"+
+							"Your browser does not support HTML video."+
+							"</video>"+
+							"</foreignObject>";
+						blah2 += "<text id=\"video1PlayButton\" x=\"150\" y=\"640\" fill=\"#FFF\" "+
+						"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";
+						blah2 += "<text id=\"video1PlayState\" x=\"1180\" y=\"634\" fill=\"#FFF\" "+
+						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";
+						blah2 += "<text id=\"video1PlayDuration\" x=\"1232\" y=\"634\" fill=\"#75909E\" "+
+						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >/"+textClock(0)+"</text>";
+						blah2 += "<line x1=\"184\" y1=\"630\" x2=\"1124\" y2=\"630\" style=\"stroke:#75909E; stroke-width:4\"  id=\"video2State\" />";
+						blah2 += "<line x1=\"184\" y1=\"630\" x2=\"185\" y2=\"630\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video2Progress\" />";
+						blah2 += addWhiteButton(1320,20,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
+						if (!smartPhone) {blah2 += addWhiteButton(1284,20,"&#xE93A","class=\"pin-map\" onclick=\"screenVid()\"");};
+					if (!smartPhone)  {
+						blah += bigBox();
+						blah += addTextBlobCentred(283+40,129+40,800-80,32,"#313C45",
+							"<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">"+textGUI[lang][".subIT"]+"&nbsp;>&nbsp;</span>"+
+							tmp[lang].desc+"</span>");
+						blah += "<rect x=\"383\" y=\"200\" width=\"600\" height=\"338\" fill=\"#000\" stroke=\"none\" />";
+						blah += "<foreignObject x=\"383\" y=\"200\" width=\"600\" height=\"338\" >"+
+                                `<div style=\"font-size:18px; color:#FFF; background-color:#000; height:100%; padding-left: 1em; padding-right: 1em;\">
+                        <p>You see, I am a scientist and I do not think like the all-powerful people of the IPCC.
+                        My theory goes against theirs and for that, I am not heard. The hypotheses are still impossible to test for the moment,
+                        but that does not mean that they are false.</p>
+
+                        <p>We must remain open and respect creativity, at the risk of following the majority current of thought.</p>
+
+                        <p>Draw card 43.</p>
+
+                        </div>` +
+							"</foreignObject>";
+						/*
+                        blah += "<text id=\"video1PlayButton\" x=\"403\" y=\"528\" fill=\"#FFF\" "+
+						"style=\"font-size:20px; text-anchor:middle; font-family:OCEicon\" class=\"pin-map\" onclick=\"playVid()\" >&#xE93B;</text>";
+						blah += "<text id=\"video1PlayState\" x=\"900\" y=\"524\" fill=\"#FFF\" "+
+						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >"+textClock(0)+"</text>";
+						blah += "<text id=\"video1PlayDuration\" x=\"960\" y=\"524\" fill=\"#75909E\" "+
+						"style=\"font-size:12px; text-anchor:end; font-family:OpenSans\" class=\"pin-map\" onclick=\"playVid()\" >/"+textClock(0)+"</text>";
+
+						blah += "<line x1=\"436\" y1=\"520\" x2=\"846\" y2=\"520\" style=\"stroke:#75909E; stroke-width:4\" id=\"video1State\" />";
+						blah += "<line x1=\"436\" y1=\"520\" x2=\"437\" y2=\"520\" style=\"stroke:#EC6661; stroke-width:4\" id=\"video1Progress\" />";
+                        */
+						blah += addWhiteButton(1042,156,"&#xE91E","class=\"pin-map\" onclick=\"changeView()\"");
+						blah += addWhiteButton(1006,156,"&#xE939","class=\"pin-map\" onclick=\"screenVid()\"");
+					};
+					break;
+
+                case "IT2nope": // display text instead of VIDEO
                     var elem = document.getElementById("video1");
-                    // full screen video
+
                     blah2 += addTextBlobCentred(40, 30, 1366 - 80, 32, "#313C45",
                         "<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">" + textGUI[lang][".subIT"] + "&nbsp;>&nbsp;</span>" +
                         tmp[lang].desc + "</span>");
@@ -262,22 +327,6 @@ function updateMat() {
                         "</div>" +
                         "</foreignObject>";
                     blah2 += addWhiteButton(1320, 20, "&#xE91E", "class=\"pin-map\" onclick=\"changeView()\"");
-                    if (!smartPhone) { blah2 += addWhiteButton(1284, 20, "&#xE93A", "class=\"pin-map\" onclick=\"screenVid()\""); }
-
-                    if (!smartPhone) {
-                        blah += bigBox();
-                        blah += addTextBlobCentred(283 + 40, 129 + 40, 800 - 80, 32, "#313C45",
-                            "<span style=\"font-weight:bold\"><span style=\"color:#75909E; text-transform:uppercase\">" + textGUI[lang][".subIT"] + "&nbsp;>&nbsp;</span>" +
-                            tmp[lang].desc + "</span>");
-                        blah += "<rect x=\"383\" y=\"200\" width=\"600\" height=\"338\" fill=\"#000\" stroke=\"none\" />";
-                        blah += "<foreignObject x=\"383\" y=\"200\" width=\"600\" height=\"338\">" +
-                            "<div style=\"font-size:16px; color:#FFF; background-color:#000; height:100%; display:flex; justify-content:center; align-items:center;\">" +
-                            "This area previously displayed a video. It now shows this message." +
-                            "</div>" +
-                            "</foreignObject>";
-                        blah += addWhiteButton(1042, 156, "&#xE91E", "class=\"pin-map\" onclick=\"changeView()\"");
-                        blah += addWhiteButton(1006, 156, "&#xE939", "class=\"pin-map\" onclick=\"screenVid()\"");
-                    }
                     break;
 
 
