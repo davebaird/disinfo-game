@@ -61,6 +61,7 @@ function resetMain(){
 
 // Update gaming mat
 function updateMat(){
+    console.log("updateMat triggered");
 	smartPhone = (window.innerWidth <= 800);
 	var myWinH = window.innerHeight-(smartPhone ? 0 : 60);
 	var myWinW = window.innerWidth;
