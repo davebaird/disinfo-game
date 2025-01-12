@@ -58,6 +58,7 @@ function resetMain(){
   togglePage();
 };
 
+/*
 // This deals with an issue on tablets whereby focus is lost when attempting to enter card numbers
 // into the input field because of an interaction with the virtul keyboard causing onresize
 // events to be called. We allow the onresize impacts to play out first, before allowing
@@ -73,10 +74,33 @@ function updateMatDebounced() {
 }
 
 // window.addEventListener('resize', updateMatDebounced);
+*/
 
+// DRB - solving input focus issue on tablets
+let inputFocused = false; // Tracks if the input is focused
+
+// Get a reference to the input field (replace '#myInput' with your input's selector)
+const inputField = document.querySelector('#myInput');
+
+// Detect when the input gains focus
+inputField.addEventListener('focus', () => {
+    inputFocused = true;
+    console.log("Input field focused");
+});
+
+// Detect when the input loses focus
+inputField.addEventListener('blur', () => {
+    inputFocused = false;
+    console.log("Input field blurred");
+});
 
 // Update gaming mat
-function updateMat(){
+function updateMat() {
+    // Modify updateMat function to respect focus state
+    if (inputFocused) {
+        // console.log("updateMat skipped due to input focus");
+        return; // Skip execution if input is focused
+    }
     // console.log("updateMat triggered");
 	smartPhone = (window.innerWidth <= 800);
 	var myWinH = window.innerHeight-(smartPhone ? 0 : 60);
