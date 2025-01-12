@@ -58,10 +58,26 @@ function resetMain(){
   togglePage();
 };
 
+// This deals with an issue on tablets whereby focus is lost when attempting to enter card numbers
+// into the input field because of an interaction with the virtul keyboard causing onresize
+// events to be called. We allow the onresize impacts to play out first, before allowing
+// updateMat to run.
+let resizeTimeout;
+function updateMatDebounced() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        console.log("Debounced updateMat called");
+        // Call the actual update logic
+        updateMat();
+    }, 300); // Adjust debounce time as needed
+}
+
+// window.addEventListener('resize', updateMatDebounced);
+
 
 // Update gaming mat
 function updateMat(){
-    console.log("updateMat triggered");
+    // console.log("updateMat triggered");
 	smartPhone = (window.innerWidth <= 800);
 	var myWinH = window.innerHeight-(smartPhone ? 0 : 60);
 	var myWinW = window.innerWidth;
