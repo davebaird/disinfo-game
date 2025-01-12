@@ -80,7 +80,7 @@ function updateMatDebounced() {
 let inputFocused = false; // Tracks if the input is focused
 
 // Get a reference to the input field (replace '#myInput' with your input's selector)
-const inputField = document.querySelector('#myInput');
+const inputField = document.querySelector('#textboxId');
 
 // Detect when the input gains focus
 inputField.addEventListener('focus', () => {
