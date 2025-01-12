@@ -69,7 +69,7 @@ function updateMatDebounced() {
         console.log("Debounced updateMat called");
         // Call the actual update logic
         updateMat();
-    }, 300); // Adjust debounce time as needed
+    }, 500); // Adjust debounce time as needed
 }
 
 // window.addEventListener('resize', updateMatDebounced);
